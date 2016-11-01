@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
 
             FileInputStream fos = null;
             try {
-                FileInputStream fos = new FileInputStream(filename);
+                fos = new FileInputStream(filename);
                 byte arr[] = new byte[fos.available()];
                 fos.read();
                 fos.close();
