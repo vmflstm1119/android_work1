@@ -26,44 +26,48 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClick(View v){
+
         if (isStoragePermissionGranted() == false) {
 
             Toast.makeText(this, "SD card 사용에러", Toast.LENGTH_SHORT).show();
             return;
         }
-        String strPath = Environment.getExternalStorageDirectory().getAbsolutePath();
 
-        //폴더생성
+        String path = Environment.getExternalStorageDirectory().getAbsolutePath();
+        String folder = path + "/hongGiDong";
+        String filename = folder + "/test.txt";
+        File mydir = new File(folder);
 
-        if(v.getId() == R.id.button4){
-            File mydir = new File(strPath + "/hongGiDong");
-            mydir.mkdir();
+        switch(v.getId()){
+            case R.id.button4:
 
-            Toast.makeText(this, "폴더생성완료", Toast.LENGTH_SHORT).show();
-        }
-        else if(v.getId() == R.id.button5){
-            File mydir = new File(strPath + "/hongGiDong");
+                mydir.mkdir();
+
+                Toast.makeText(this, "폴더생성완료", Toast.LENGTH_SHORT).show();
+        break;
+
+        case R.id.button5:
+
             mydir.delete();
             Toast.makeText(this, "폴더삭제완료", Toast.LENGTH_SHORT).show();
-        }
+            break;
 
-        else if (v.getId() == R.id.button6) {
-            String filename = strPath + "/hongGiDong/test.txt";
-            try {
-                FileOutputStream fos = new FileOutputStream(filename);
+            case R.id.button6:
+                try {
+                    FileOutputStream fos = new FileOutputStream(filename);
 
-                fos.write("안녕하세요".getBytes());
-                fos.close();
-                Toast.makeText(this, "저장 완료", Toast.LENGTH_SHORT).show();
-            }catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        else if (v.getId() == R.id.button7) {
-            String filename = strPath + "/hongGiDong/test.txt";
+                    fos.write("안녕하세요".getBytes());
+                    fos.close();
+                    Toast.makeText(this, "저장 완료", Toast.LENGTH_SHORT).show();
+                }catch (IOException e) {
+                    e.printStackTrace();
+                }break;
+
+        case R.id.button7:
+
             FileInputStream fos = null;
             try {
-                fos = new FileInputStream(filename);
+                FileInputStream fos = new FileInputStream(filename);
                 byte arr[] = new byte[fos.available()];
                 fos.read();
                 fos.close();
@@ -76,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
+            break;
 
         }
     }
