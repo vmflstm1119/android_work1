@@ -8,12 +8,13 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.ansan.myapplication.MainActivity">
+    tools:context="com.example.ansan.myapplication.MainActivity"
+    android:weightSum="1">
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <Button
             android:onClick="onClick"
@@ -40,8 +41,22 @@
             android:onClick="onClick"
             android:layout_width="60dp"
             android:layout_height="wrap_content"
-            android:text="파일삭제"
+            android:text="파일읽기"
             android:id="@+id/button7" />
     </LinearLayout>
+
+    <Button
+        android:onClick="onClick"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="파일목록가져오기"
+        android:id="@+id/button" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText"
+        android:layout_weight="0.82"
+        android:background="#f7bebe" />
 
 </LinearLayout>
